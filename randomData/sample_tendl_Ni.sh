@@ -1,9 +1,9 @@
 #!/bin/bash -l
 #SBATCH -A dp163
 #SBATCH -p cosma7
-#SBATCH -J Fe_processing
-#SBATCH -e Fe_errors
-#SBATCH -o Fe_print
+#SBATCH -J Ni_tendl_processing
+#SBATCH -e Ni_tendl_errors
+#SBATCH -o Ni_tendl_print
 #SBATCH -D ./
 #SBATCH --export=ALL
 #SBATCH -N 1
@@ -13,7 +13,7 @@
 module purge
 module load neutronics
 
-EXEC="python3 sample_sandy.py -s 500 -n Ni58 Ni60 Ni61 Ni62 Ni64 Cu63 Cu65 Mg24 Mg25 Mg26 B10 B11-p $SLURM_NTASKS -d tendl_rand -l $TENDL_ENDF"
+EXEC="sample_sandy.py -s 500 -n Ni58 Ni60 Ni61 Ni62 Ni64 Cu63 Cu65 Mg24 Mg25 Mg26 -p $SLURM_NTASKS -d tendl_rand -l $TENDL_ENDF"
 
 #
 # Should not need to edit below this line

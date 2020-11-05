@@ -18,4 +18,7 @@ For Fe
 TENDL: O16, N14
 
 For Ni
-TENLD: H1
+TENLD: H1, B10, B11
+
+For fng_str
+TENLD: H1, O16, N14, B10, B11
