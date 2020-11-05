@@ -23,9 +23,9 @@ export OPENMC_JEFF_XS=/cosma/home/dp163/dc-gray2/data7/neutronics/nuclearData/je
 ##
 #   data endf files
 ##
-# Crossection endf dir
-#export OPENMC_ENDF=/cosma/home/dp163/dc-gray2/data7/neutronics/nuclearData/nndc-b7.1-hdf5/cross_sections.xml
-
+# Directory of library endf files (required for sampling with SANDY)
+export OPENMC_ENDF=/cosma/home/dp163/dc-gray2/data7/neutronics/nuclearData/nndc-b7.1-endf
+export TENDL_ENDF=/cosma/home/dp163/dc-gray2/data7/neutronics/nuclearData/tendl-2019-endf
 
 ##
 # Openmc data processing directory: https://github.com/openmc-dev/data
