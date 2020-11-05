@@ -1,0 +1,24 @@
+<materials>
+  <material id="1">
+    <density units="g/cc" value="7.85" />
+    <nuclide name="C0" wo="0.0016" />
+    <nuclide name="P31" wo="0.0002" />
+    <nuclide name="Mn55" wo="0.0089" />
+    <nuclide name="Fe54" wo="0.05965533970496963" />
+    <nuclide name="Fe56" wo="0.9030162108079198" />
+    <nuclide name="Fe57" wo="0.020488712503056616" />
+    <nuclide name="Fe58" wo="0.002679659930465997" />
+    <nuclide name="Si28" wo="0.0021276059208619772" />
+    <nuclide name="Si29" wo="0.00010435699700114983" />
+    <nuclide name="Si30" wo="6.657761086516616e-05" />
+    <nuclide name="S32" wo="9.518231736590276e-05" />
+    <nuclide name="S33" wo="7.287451683212798e-07" />
+    <nuclide name="S34" wo="4.008098425767039e-06" />
+    <nuclide name="S36" wo="8.906885390593421e-09" />
+  </material>
+  <material id="2">
+    <density units="g/cc" value="0.0012" />
+    <nuclide ao="0.211" name="O16" />
+    <nuclide ao="0.789" name="N14" />
+  </material>
+</materials>

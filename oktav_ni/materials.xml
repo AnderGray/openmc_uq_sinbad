@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<materials>
+  <material id="1" name="M1">
+    <density units="g/cc" value="8.85" />
+    <nuclide name="Ni58" wo="0.6714400000000001" />
+    <nuclide name="Ni60" wo="0.26554000000000005" />
+    <nuclide name="Ni61" wo="0.011690000000000002" />
+    <nuclide name="Ni62" wo="0.037750000000000006" />
+    <nuclide name="Ni64" wo="0.009880000000000002" />
+    <nuclide name="Mn55" wo="0.0015000000000000002" />
+    <nuclide name="Fe56" wo="0.0004000000000000001" />
+    <nuclide name="Cu63" wo="7.000000000000001e-05" />
+    <nuclide name="Cu65" wo="3.0000000000000004e-05" />
+    <nuclide name="Si28" wo="0.0014800736840778976" />
+    <nuclide name="Si29" wo="7.259617182688686e-05" />
+    <nuclide name="Si30" wo="4.6314859732289514e-05" />
+    <nuclide name="Mg24" wo="7.999400114378886e-05" />
+    <nuclide name="Mg25" wo="9.722020647934842e-06" />
+    <nuclide name="Mg26" wo="1.0292254551323326e-05" />
+  </material>
+  <material id="2" name="M2">
+    <density units="g/cc" value="0.0012" />
+    <nuclide ao="0.208" name="O16" />
+    <nuclide ao="0.792" name="N14" />
+  </material>
+  <material id="3" name="M3">
+    <density units="g/cc" value="1.0" />
+    <nuclide ao="0.5800000000000001" name="H1" />
+    <nuclide ao="0.026000000000000002" name="B10" />
+    <nuclide ao="0.10400000000000001" name="B11" />
+    <nuclide ao="0.28689700000000007" name="C0" />
+  </material>
+  <material id="4" name="M4">
+    <density units="atom/b-cm" value="0.08487" />
+    <nuclide ao="1.0" name="Fe56" />
+  </material>
+</materials>

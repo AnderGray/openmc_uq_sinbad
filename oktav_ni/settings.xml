@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<settings>
+  <run_mode>fixed source</run_mode>
+  <survival_biasing>false</survival_biasing>
+  <particles>100000</particles>
+  <batches>10</batches>
+  <source library="./libsource.so"/>
+</settings>

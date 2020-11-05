@@ -1,0 +1,10 @@
+<settings>
+  <run_mode>fixed source</run_mode>   
+  <!-- Parameters for k-eigenvalue calculation -->
+  <batches>10</batches>
+  <particles>1000000000</particles>
+  <photon_transport>true</photon_transport>
+  <survival_biasing>false</survival_biasing>
+  <!-- Starting source -->
+  <source library="./libsource.so"/> 
+</settings>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<geometry>
+  <cell id="1" material="2" region="-1" universe="0" />
+  <cell id="2" material="2" region="1 -2 -3 -4" universe="0" />
+  <cell id="3" material="1" region="-2 1 ~(1 -2 -3 -4)" universe="0" />
+  <cell id="4" material="2" region="2 -7 -5" universe="0" />
+  <cell id="5" material="4" region="6 7 -8 -5" universe="0" />
+  <cell id="6" material="2" region="-6 7 -8" universe="0" />
+  <cell id="7" material="2" region="8 -9 -5" universe="0" />
+  <cell id="8" material="4" region="6 9 -10 -5" universe="0" />
+  <cell id="9" material="2" region="-6 9 -10" universe="0" />
+  <cell id="10" material="3" region="10 -11 12 -13" universe="0" />
+  <cell id="11" material="2" region="10 -5 ~(10 -11 12 -13)" universe="0" />
+  <cell id="12" material="void" region="5" universe="0" />
+  <surface coeffs="0.0 0.0 0.0 0.4" id="1" type="sphere" />
+  <surface coeffs="0.0 0.0 0.0 16.0" id="2" type="sphere" />
+  <surface coeffs="0.0 0.0 0.4" id="3" type="y-cylinder" />
+  <surface coeffs="0.0" id="4" type="y-plane" />
+  <surface boundary="vacuum" coeffs="0.0 0.0 0.0 1200.0" id="5" type="sphere" />
+  <surface coeffs="0.0 1515.4889119170984 0.0 0.00011925169891818093" id="6" type="y-cone" />
+  <surface coeffs="310.0" id="7" type="y-plane" />
+  <surface coeffs="500.0" id="8" type="y-plane" />
+  <surface coeffs="800.0" id="9" type="y-plane" />
+  <surface coeffs="890.0" id="10" type="y-plane" />
+  <surface coeffs="980.0" id="11" type="y-plane" />
+  <surface coeffs="0.0 0.0 10.0" id="12" type="y-cylinder" />
+  <surface coeffs="0.0 0.0 40.0" id="13" type="y-cylinder" />
+</geometry>

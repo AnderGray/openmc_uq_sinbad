@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
+project(openmc_sources CXX)
+add_library(source SHARED fng_source.cpp fng_source.hpp)
+find_package(OpenMC REQUIRED)
+if (OpenMC_FOUND)
+  message(STATUS "Found OpenMC: ${OPENMC_HOME}")
+endif()
+target_link_libraries(source OpenMC::libopenmc)
