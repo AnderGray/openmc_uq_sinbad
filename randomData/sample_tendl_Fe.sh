@@ -1,9 +1,9 @@
 #!/bin/bash -l
 #SBATCH -A dp163
 #SBATCH -p cosma7
-#SBATCH -J Fe_processing
-#SBATCH -e Fe_errors
-#SBATCH -o Fe_print
+#SBATCH -J Fe_tendl_processing
+#SBATCH -e Fe_tendl_errors
+#SBATCH -o Fe_tendl_print
 #SBATCH -D ./
 #SBATCH --export=ALL
 #SBATCH -N 1
