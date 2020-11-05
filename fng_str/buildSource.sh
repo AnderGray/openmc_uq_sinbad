@@ -7,3 +7,4 @@ cd source/bld
 cmake ..
 make 
 cp libsource.so ../../
+cd ../..
