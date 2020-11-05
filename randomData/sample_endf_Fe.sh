@@ -13,7 +13,7 @@
 module purge
 module load neutronics
 
-EXEC="python3 sample_sandy.py -s 500 -n Fe54 Fe56 Fe57 Si28 Si29 Si30 O16 -p $SLURM_NTASKS -d endf_rand -l $OPENMC_ENDF"
+EXEC="sample_sandy.py -s 500 -n Fe54 Fe56 Fe57 Si28 Si29 Si30 O16 C0 -p $SLURM_NTASKS -d endf_rand -l $OPENMC_ENDF"
 
 #
 # Should not need to edit below this line
