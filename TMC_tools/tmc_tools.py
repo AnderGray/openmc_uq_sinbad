@@ -1,5 +1,5 @@
 import openmc
-
+import os
 
 
 
@@ -18,3 +18,14 @@ def replaceNuclideMaterial(nuc, materials, newNuc):
     return materials
 
 
+def replaceNuclideTally(nuc, newNuc):
+    fin = open("tallies.xml", "rt")
+    fout = open("tallies1.xml", "wt")
+
+    for line in fin:
+	#read replace the string and write to output file
+	    fout.write(line.replace(nuc, newNuc))
+    
+    fin.close()
+    fout.close()
+    os.system("mv tallies1.xml tallies.xml")
