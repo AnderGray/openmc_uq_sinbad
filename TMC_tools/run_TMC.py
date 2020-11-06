@@ -146,6 +146,9 @@ def prepSim(mats, sets, geo, index):
         tmc_tools.replaceNuclideMaterial(nuclides[i], mats, NuclideStream[i][index-1])
     mats.export_to_xml()
 
+    for i in range(Nnuclides):
+        tmc_tools.replaceNuclideTally(nuclides[i], NuclideStream[i][index-1])
+
     #os.system(f"cp {script_dir}/openmc_sub.sh .")
     #os.system(f"cp ../formatTallies.py .")
     if os.path.isfile(f"{script_dir}/libsource.so"): os.system(f"cp {script_dir}/libsource.so {ThisSim}/libsource.so")
