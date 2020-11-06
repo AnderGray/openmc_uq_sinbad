@@ -141,9 +141,10 @@ def prepSim(mats, sets, geo, index):
     sets.export_to_xml()
     geo.export_to_xml()
     copyfile(f"{script_dir}/tallies.xml", f"{ThisSim}/tallies.xml")
+    copyfile(f"{script_dir}/materials.xml", f"{ThisSim}/materials.xml")
 
     for i in range(Nnuclides):
-        tmc_tools.replaceNuclideMaterial(nuclides[i], mats, NuclideStream[i][index-1])
+        tmc_tools.replaceNuclideMaterial(nuclides[i], NuclideStream[i][index-1])
     mats.export_to_xml()
 
     for i in range(Nnuclides):
