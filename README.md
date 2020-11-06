@@ -22,11 +22,11 @@ Useage:
   * Variance reduction cannot be used with these cross sections due to [issue #1699](https://github.com/openmc-dev/openmc/issues/1699)
   
 **Benchmarks and Uncertainty Propagation:**
-* Set appropriate submission script for _TMC_tools/openmc_sub.sh_
-* For Ni and FNG, build source with _buildSource.sh_
-* Various uncertain libraries may be propagated with provided scripts, ie _oktav_fe/runEndf.py_
+* Set appropriate submission script for _[TMC_tools/openmc_sub.sh](https://github.com/AnderGray/openmc_uq_sinbad/blob/main/TMC_tools/openmc_sub.sh)_
+* For Ni and FNG, build source with _[buildSource.sh](https://github.com/AnderGray/openmc_uq_sinbad/blob/main/oktav_ni/buildSource.sh)_
+* Various uncertain libraries may be propagated with provided scripts, ie _[oktav_fe/runEndf.sh](https://github.com/AnderGray/openmc_uq_sinbad/blob/main/oktav_fe/runEndf.sh)_
  * One job is submitted per random evaluation, i.e if 500 random samples, 500 jobs
- * Multiple random nuclides are ran simultaneously. Inter-nuclide dependence is assumed to be independent. No inter-nuclide covariance is generally supplied
+ * Multiple random nuclides are ran simultaneously. Inter-nuclide dependence is assumed to be independent.
 
 **Sensativity analysis:**
 * Not yet supplied, but quite simple.
@@ -37,7 +37,7 @@ Useage:
 * For tally arithmetic, we use [ProbabilityBoundsAnalysis.jl](https://github.com/AnderGray/ProbabilityBoundsAnalysis.jl)
   * Allows you to perform arithmetic considering both ND and statsitical uncertainties.
   * Arithmetic with independence, dependent (with correlation), or unknown correlation.
-* Plotting script available in _TMC_tools_
+* Plotting script available in _[TMC_tools](https://github.com/AnderGray/openmc_uq_sinbad/tree/main/TMC_tools)_
 
 Details:
 ---
