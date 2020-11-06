@@ -11,11 +11,11 @@ missing covariance files
 
 ENDF format error
 --
-* Fe_tendl: O16, N14
+* Fe_tendl: O16, N14, C0
 
-* Ni_tendl: H1, O16, N14, B10, B11
+* Ni_tendl: H1, O16, N14, B10, B11, C0
 
-* fng_str_tendl: H1, O16, N14, B10, B11
+* fng_str_tendl: H1, O16, N14, B10, B11, C0
 
 
 Uncertainty plots

@@ -13,7 +13,7 @@
 module purge
 module load neutronics
 
-EXEC="sample_sandy.py -s 500 -n Fe54 Fe56 Fe57 Fe58 Si28 Si29 Si30 C0 P31 Mn55 S32 S33 S34 S36 -p $SLURM_NTASKS -d tendl_rand -l $TENDL_ENDF"
+EXEC="sample_sandy.py -s 500 -n Fe54 Fe56 Fe57 Fe58 Si28 Si29 Si30 P31 Mn55 S32 S33 S34 S36 -p $SLURM_NTASKS -d tendl_rand -l $TENDL_ENDF"
 
 #
 # Should not need to edit below this line
