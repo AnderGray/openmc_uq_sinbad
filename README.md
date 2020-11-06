@@ -45,3 +45,7 @@ Useage:
 Details:
 ---
 In TMC random evaluations of the nuclear data quantities are created either by using the endf covaraiance information (produces gaussian random evalutations) or by using a bayesian method with a nuclear reaction model code (TENDL library produced this way). The particle transport simulation is then repeated with each random evaluation. Each transport simulation has statistical uncertainty assosiated with it, which also must be considered. If the individual statistical uncertainty is negliable compared to the ND uncertainty, then standard probability theory may be applied. If this is not the case and both need to be considered, we use [imprecise probabilities](https://en.wikipedia.org/wiki/Imprecise_probability) to perform further analysis. This is especially relevent in "Fast-TMC", where larger statistical uncertainty is exchanged for compute time.
+
+
+![alt text](https://imgur.com/kAVOSfd.png "Oktav Fe tendl and endf")
+![alt text](https://imgur.com/AQvX6JN.png "Difference with uncertainty")
