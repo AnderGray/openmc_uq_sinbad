@@ -106,7 +106,7 @@ if Nparticles is None: Nparticles = settings.particles
 
 settings.particles = int(Nparticles)
 settings.batches = int(Ninner)
-materials.cross_sections = crossections
+materials.cross_sections = str(crossections)
 
 
 #============================================================
