@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import openmc
 import random
 from multiprocessing import Pool
@@ -55,7 +57,7 @@ nuclides = args.nuclides
 output_dir = args.destination
 simname = args.simname
 crossections = args.libdir
-Nouter = args.samples
+Nouter = int(args.samples)
 Ninner  = args.batches
 Nparticles = args.Nparticles
 
@@ -102,8 +104,8 @@ randomSeeds = [random.randint(1, sys.maxsize) for i in range(Nouter)]
 if Ninner is None: Ninner = settings.batches
 if Nparticles is None: Nparticles = settings.particles
 
-settings.particles = Nparticles
-settings.batches = Ninner
+settings.particles = int(Nparticles)
+settings.batches = int(Ninner)
 materials.cross_sections = crossections
 
 
