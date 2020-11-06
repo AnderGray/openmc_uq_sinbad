@@ -146,10 +146,15 @@ def prepSim(mats, sets, geo, index):
         tmc_tools.replaceNuclideMaterial(nuclides[i], mats, NuclideStream[i][index-1])
     mats.export_to_xml()
 
-    os.system(f"cp {script_dir}/openmc_sub.sh .")
+    #os.system(f"cp {script_dir}/openmc_sub.sh .")
     #os.system(f"cp ../formatTallies.py .")
 
     command = f"sbatch -J {index}_{simname} openmc_sub.sh {simname} {index} {Ninner}"
     os.system(command)
     
     os.chdir(script_dir)
+
+
+
+for i in range(1,Nouter+1):
+    prepSim(copy.deepcopy(materials), copy.deepcopy(settings), copy.deepcopy(geometry), i)
