@@ -14,7 +14,6 @@ module load neutronics
 
 #EXEC="python convert_tendl_rand.py -b"
 EXEC="openmc -s $SLURM_NTASKS"
-EXEC1="mv statepoint.$3.h5 ../statepoint-$1/statepoint.$2.h5"
 
 #
 # Should not need to edit below this line
@@ -30,8 +29,8 @@ echo Running with $SLURM_NTASKS cores
 #mpirun -np $SLURM_NTASKS $EXEC
 $EXEC
 echo Done with OPENMC, processing
-$EXEC1
 
+mv statepoint.$3.h5 ../statepoints-$1/statepoint.$2.h5
 cd ..
 rm -r $1-$2
 
