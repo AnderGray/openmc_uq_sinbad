@@ -67,7 +67,7 @@ class Source : public openmc::CustomSource
   for(int i = 1; i < 127; i++){
     if(rnd <= energyDistibution[i][index] && rnd > energyDistibution[i-1][index]){
       /* energy between the lower and upper value sampled randomly*/
-      particle.E = 1.e6*openmc::prn(seed)*(energyDistibution[i][0]-energyDistibution[i-1][0])+energyDistibution[i-1][0];
+      particle.E = 1.e6*openmc::prn(seed)*(energyDistibution[i][0]-energyDistibution[i-1][0])+energyDistibution[i-1][0] * 1.e6;
       break;
     }
   }
