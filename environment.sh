@@ -32,3 +32,6 @@ export TENDL_ENDF=/cosma/home/dp163/dc-gray2/data7/neutronics/nuclearData/tendl-
 ##
 PATH=$PATH:/cosma/home/dp163/dc-gray2/opt/openmc/data
 PYTHONPATH=$PYTHONPATH:/cosma/home/dp163/dc-gray2/opt/openmc/data
+
+PATH=$PATH:$(pwd)/TMC_tools
+PYTHONPATH=$PYTHONPATH:$(pwd)/TMC_tools
