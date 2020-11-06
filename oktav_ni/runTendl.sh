@@ -1,0 +1,1 @@
+run_TMC -s 500 -l ../randomData/tendl_rand/cross_sections_sandy.xml -name tendlFe -n Ni58 Ni60 Ni61 Ni62 Ni64 Cu63 Cu65 Mg24 Mg25 Mg26 Fe56 Mn55 Si28 Si29 Si30
