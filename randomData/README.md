@@ -1,4 +1,4 @@
-# SANDY sampling errors
+# SANDY sampling
 
 missing covariance files
 --
