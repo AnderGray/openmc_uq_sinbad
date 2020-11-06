@@ -16,3 +16,14 @@ ENDF format error
 * Ni_tendl: H1, B10, B11
 
 * fng_str_tendl: H1, O16, N14, B10, B11
+
+
+Uncertainty plots
+--
+![alt text](https://imgur.com/7zFAeko.png "Fe56 absorption")
+
+![alt text](https://imgur.com/CjLz8Sr.png "Fe56 zoomed")
+
+![alt text](https://imgur.com/9nN7rM4.png "Bivariate distribution at 2 energies")
+
+![alt text](https://imgur.com/GbiYLGR.png "Correlation matrix")
