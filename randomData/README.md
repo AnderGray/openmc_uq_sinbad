@@ -4,10 +4,10 @@ missing covariance files
 --
 * Fe_endf: N14, P31, Mn55, S32, S33, S36, N14
 
-* Ni_endf: Ni62, Ni64, Mn55, Cu63, Cu63, N14
+* Ni_endf: Ni61, Ni62, Ni64, Mn55, Cu63, Cu63, N14
 
-* fng_str_endf: Cr54, Mn55, Co59, Ni62, Ni64, Cu63, Cu65, V50, V51, K39, K40, K41, Nb93
-
+* fng_str_endf: Cr54, Mn55, Co59, Ni61, Ni62, Ni64, Cu63, Cu65, V50, V51, K39, K40, K41, Nb93
+ 
 
 ENDF format error
 --
