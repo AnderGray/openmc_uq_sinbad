@@ -148,7 +148,7 @@ def prepSim(mats, sets, geo, index):
 
     #os.system(f"cp {script_dir}/openmc_sub.sh .")
     #os.system(f"cp ../formatTallies.py .")
-    if os.path.isfile("libsource.so"): copyfile(f"{script_dir}/libsource.so", f"{ThisSim}/libsource.so")
+    if os.path.isfile(f"{script_dir}/libsource.so"): os.system(f"cp {script_dir}/libsource.so {ThisSim}/libsource.so")
     command = f"sbatch -J {index}_{simname} openmc_sub.sh {simname} {index} {Ninner}"
     os.system(command)
     
