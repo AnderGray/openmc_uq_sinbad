@@ -15,8 +15,9 @@ Useage:
 * Set relevant environmental variables in environment.sh
 * (If TENDL) Set names of TENDL endf files with [randomData/rename_tendl_lib.py](https://github.com/AnderGray/openmc_uq_benchmarks/blob/main/randomData/rename_tendl_lib.py)
 * Sample benchmark data with scripts in randomData
-  * sandy used for sampling
-  * slurm submission scripts provided, appropriate changes required
+  * SANDY used for sampling
+  * Slurm submission scripts provided, appropriate changes required
+  * Default number of samples: 500
 
 Details:
 ---
