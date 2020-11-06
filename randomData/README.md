@@ -13,7 +13,7 @@ ENDF format error
 --
 * Fe_tendl: O16, N14
 
-* Ni_tendl: H1, B10, B11
+* Ni_tendl: H1, B10, B11, O16, N14
 
 * fng_str_tendl: H1, O16, N14, B10, B11
 
