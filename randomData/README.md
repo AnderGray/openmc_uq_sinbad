@@ -20,6 +20,16 @@ ENDF format error
 
 Uncertainty plots
 --
+
+* plotRandom.py: plots cross section with random evaluations
+* plotSlice.py: plots random cross section, zoomed and distribution at two marked energies
+
+Useage:
+
+```python3
+python3 plotRandom.py -n Fe56 -mt 1 -d endf_hdf5 --Nfiles 500 
+```
+
 ![alt text](https://imgur.com/7zFAeko.png "Fe56 absorption")
 
 ![alt text](https://imgur.com/CjLz8Sr.png "Fe56 zoomed")
