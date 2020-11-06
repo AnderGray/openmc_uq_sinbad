@@ -21,17 +21,23 @@ Useage:
   * Default number of samples: 500
   * Variance reduction cannot be used with these cross sections due to [issue #1699](https://github.com/openmc-dev/openmc/issues/1699)
   
-**Benchmarks and Uncertainty Propagation**
+**Benchmarks and Uncertainty Propagation:**
 * Set appropriate submission script for _TMC_tools/openmc_sub.sh_
 * For Ni and FNG, build source with _buildSource.sh_
 * Various uncertain libraries may be propagated with provided scripts, ie _oktav_fe/runEndf.py_
  * One job is submitted per random evaluation, i.e if 500 random samples, 500 jobs
  * Multiple random nuclides are ran simultaneously. Inter-nuclide dependence is assumed to be independent. No inter-nuclide covariance is generally supplied
 
-**Sensativity analysis**
+**Sensativity analysis:**
 * Not yet supplied, but quite simple.
 * If you would like to know the sensitivity of eg Fe56, run the simulation will all other nuclides uncertain except this one
-* Then measure the drop in uncertainty with either difference in variances (sattelli), entropy (information based), area metric (pinching), ...
+* Then measure the drop in uncertainty with either difference in variances (Saltelli), entropy (information based), area metric (pinching), ...
+
+**Post processing and plotting:**
+* For tally arithmetic, we use [ProbabilityBoundsAnalysis.jl](https://github.com/AnderGray/ProbabilityBoundsAnalysis.jl)
+  * Allows you to perform arithmetic considering both ND and statsitical uncertainties.
+  * Arithmetic with independence, dependent (with correlation), or unknown correlation.
+* Plotting script available in _TMC_tools_
 
 Details:
 ---
