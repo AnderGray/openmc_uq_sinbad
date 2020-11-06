@@ -2,7 +2,7 @@
 
 missing covariance files
 --
-* Fe_endf: N14, P31, Mn55, S32, S33, S36
+* Fe_endf: N14, P31, Mn55, S32, S33, S36, N14
 
 * Ni_endf: Ni62, Ni64, Mn55, Cu63, Cu63, N14
 
