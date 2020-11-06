@@ -31,7 +31,7 @@ Useage:
  * One job is submitted per random evaluation, i.e if 500 random samples, 500 jobs
  * Multiple random nuclides are ran simultaneously. Inter-nuclide dependence is assumed to be independent.
 
-**Sensativity Analysis (todo):**
+**Sensitivity Analysis (todo):**
 * Not yet supplied, but quite simple.
 * If you would like to know the sensitivity of eg Fe56, run the simulation will all other nuclides uncertain except this one
 * Then measure the drop in uncertainty with either difference in variances (Saltelli), entropy (information based), area metric (pinching), ...
