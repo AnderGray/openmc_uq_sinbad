@@ -1,4 +1,4 @@
-# openmc_uq_sinbad
+# SINBAD fusion benchmarks with UQ and openmc
 Repository for running SINBAD benchmarks with openmc and nuclear data uncertainty propagation. Nuclear data is propagated with Monte Carlo simulation, à la Total Monte Carlo (TMC).
 
 Required:
