@@ -17,8 +17,8 @@ Useage:
 **Nuclear Data sampling:**
 * Download relevant endf and hdf5 data with [openmc/data](https://github.com/openmc-dev/data) scripts (NNDC, TENDL and JEFF used)
 * Set relevant environmental variables in environment.sh
-* (If TENDL) Set names of TENDL endf files with _[randomData/rename_tendl_lib.py](https://github.com/AnderGray/openmc_uq_benchmarks/blob/main/randomData/rename_tendl_lib.py)_
-* Sample benchmark data with scripts in _[randomData](https://github.com/AnderGray/openmc_uq_benchmarks/blob/main/randomData)_
+* (If TENDL) Set names of TENDL endf files with _[random_data/rename_tendl_lib.py](https://github.com/AnderGray/openmc_uq_benchmarks/blob/main/randomData/rename_tendl_lib.py)_
+* Sample benchmark data with scripts in _[random_data](https://github.com/AnderGray/openmc_uq_benchmarks/blob/main/randomData)_
   * SANDY used for sampling
   * Slurm submission scripts provided, appropriate changes required
   * Default number of samples: 500
@@ -27,7 +27,7 @@ Useage:
 **Benchmarks and Uncertainty Propagation:**
 * Set appropriate submission script for _[TMC_tools/openmc_sub.sh](https://github.com/AnderGray/openmc_uq_sinbad/blob/main/TMC_tools/openmc_sub.sh)_
 * For Ni and FNG, build source with _[buildSource.sh](https://github.com/AnderGray/openmc_uq_sinbad/blob/main/oktav_ni/buildSource.sh)_
-* Various uncertain libraries may be propagated with provided scripts, ie _[oktav_fe/runEndf.sh](https://github.com/AnderGray/openmc_uq_sinbad/blob/main/oktav_fe/runEndf.sh)_
+* Various uncertain libraries may be propagated with provided scripts, ie _[oktav_fe/run_endf.sh](https://github.com/AnderGray/openmc_uq_sinbad/blob/main/oktav_fe/runEndf.sh)_
  * One job is submitted per random evaluation, i.e if 500 random samples, 500 jobs
  * Multiple random nuclides are ran simultaneously. Inter-nuclide dependence is assumed to be independent.
 
