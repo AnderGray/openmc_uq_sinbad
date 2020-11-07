@@ -1,1 +1,1 @@
-run_TMC.py -s 500 -l ../randomData/endf_rand/cross_sections_sandy.xml -name endfFNG -n C0 O16 B10 B11 Ni58 Ni60 Mg24 Mg25 Mg26 Si28 Si29 Si30 Cr50 Cr52 Fe54 Fe56 Fe57 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 Mo100 Na23 Al27 Au197
+run_TMC.py -s 500 -l ../random_data/endf_rand/cross_sections_sandy.xml -name endfFNG -n C0 O16 B10 B11 Ni58 Ni60 Mg24 Mg25 Mg26 Si28 Si29 Si30 Cr50 Cr52 Fe54 Fe56 Fe57 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 Mo100 Na23 Al27 Au197
