@@ -22,6 +22,7 @@ Useage:
   * SANDY used for sampling
   * Slurm submission scripts provided, appropriate changes required
   * Default number of samples: 500
+  * Some covariance files missing for some nuclides, see _[random_data/README.MD](https://github.com/AnderGray/openmc_uq_sinbad/blob/main/random_data/README.md)_
   * Variance reduction cannot be used with these cross sections due to [issue #1699](https://github.com/openmc-dev/openmc/issues/1699)
   
 **Benchmarks and Uncertainty Propagation:**
