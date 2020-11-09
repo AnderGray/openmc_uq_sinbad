@@ -1,8 +1,8 @@
 #!/bin/bash -l
 #SBATCH -A dp163
 #SBATCH -p cosma7
-#SBATCH -e errors
-#SBATCH -o output
+#SBATCH -e errorsJeff
+#SBATCH -o outputJeff
 #SBATCH -D ./
 #SBATCH --export=ALL
 #SBATCH -N 1
