@@ -266,7 +266,7 @@
   </filter>
 
   <filter id="2" type="surface">
-    <bins>5</bins>
+    <bins>1 2 3 4 5 6</bins>
   </filter>
 
   <filter id="3" type="particle">
