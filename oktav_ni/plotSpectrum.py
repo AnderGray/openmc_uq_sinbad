@@ -30,7 +30,7 @@ plotTendl = True
 plotJeff = True
 
 
-useLeth = 1
+useLeth = 0
 useSurf = 1
 
 r = 0.16
@@ -39,7 +39,7 @@ TallyId = 1
 
 simDir = Path.cwd()
 
-Nfiles = 500
+Nfiles = 50
 
 SIMNAME1 = "endfNi"
 SIMNAME2 = "tendlNi"
@@ -64,7 +64,7 @@ enLo = Tal['energy low [eV]']
 widths = enHi - enLo
 
 leth = 1
-surf = 0
+surf = 1
 
 if useLeth: leth = abs(np.log(widths) * (widths > 1))
 if useSurf: surf = np.pi * 4 * r**2
@@ -173,6 +173,16 @@ if plotTendl:
     plt.fill_between(enHi, LowerTendl, UpperTendl,alpha=0.3, color ="grey", step = "post", label='tendl 95%')
 
 
+if plotJeff:
+    print("Beginning jeff plot...")
+    sp = openmc.StatePoint("statepoint.jeff.h5")
+    Tal = sp.get_tally(id = TallyId).get_pandas_dataframe()
+    #enHi = Tal['energy high [eV]']
+    #enLo = Tal['energy low [eV]']
+    mean = Tal['mean']
+    stf = Tal['std. dev.']
+    meanJeff = mean * leth/surf
+    plt.step(enHi, meanJeff, color = "black", alpha = 1,linewidth = 2, label='jeff', where = "post")
 
 
 leg = plt.legend()
@@ -188,3 +198,6 @@ if useLeth:
 else:
     plt.ylabel("Neutron current [ n/source] ")
 
+print("saving...")
+plt.savefig(f"oktav_ni_current.png", dpi=1200)
+plt.clf()
