@@ -36,13 +36,21 @@ class Source : public openmc::CustomSource
 
   double theta = 0;
   int index = 0;
-  
+  double scaledR = 0;
+  double interplTheta = 0;
+  double a = 0;
+  double b = 0;
+
   /* how to get random number */
   double rnd = openmc::prn(seed);
   /* check which theta will be used depending on the distribution*/
   for(int i = 1; i < 40; i++){
     if(rnd <= angleDistribution[i][1] && rnd > angleDistribution[i-1][1]){
-      theta = std::acos(angleDistribution[i][0]);
+
+      a = angleDistribution[i-1][1]; b = angleDistribution[i][1];
+      scaledR = (rnd -  a)/(b - a);
+      interplTheta = angleDistribution[i-1][0] + scaledR * (angleDistribution[i][0] - angleDistribution[i-1][0]);
+      theta = std::acos(interplTheta);
       index = i;
       break;
     }
