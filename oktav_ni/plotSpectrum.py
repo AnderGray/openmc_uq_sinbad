@@ -11,6 +11,8 @@ import numpy as np
 
 import openmc
 
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -39,7 +41,7 @@ TallyId = 1
 
 simDir = Path.cwd()
 
-Nfiles = 50
+Nfiles = 500
 
 SIMNAME1 = "endfNi"
 SIMNAME2 = "tendlNi"
