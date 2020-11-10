@@ -65,7 +65,7 @@ enLo = Tal['energy low [eV]']
 widths = enHi - enLo
 
 leth = 1
-surf = 0
+surf = 1
 
 if useLeth: leth = abs(np.log(widths) * (widths > 1))
 if useSurf: surf = np.pi * 4 * r**2
@@ -80,7 +80,7 @@ Lower = norm(means,stds).ppf(0.05)
 
 print("Beginning endf plot...")
 
-for i in range(1, Nfiles):
+for i in range(2, Nfiles+1):
     sp = openmc.StatePoint(f'{statePointDirSandy}/statepoint.{i}.h5')
     Tal = sp.get_tally(id = TallyId).get_pandas_dataframe()
     thisMean = np.array(Tal['mean'])
@@ -132,7 +132,7 @@ if plotTendl:
 
     print("Beginning tendl plot...")
 
-    for i in range(1, Nfiles):
+    for i in range(2, Nfiles+1):
         sp = openmc.StatePoint(f'{statePointDirTendl}/statepoint.{i}.h5')
         Tal = sp.get_tally(id = TallyId).get_pandas_dataframe()
         thisMean = np.array(Tal['mean'])

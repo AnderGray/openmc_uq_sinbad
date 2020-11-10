@@ -19,7 +19,6 @@ import pandas as pd
 from scipy.stats import norm
 
 import warnings
-
 warnings.simplefilter("ignore")
 
 ###
@@ -80,7 +79,7 @@ Lower = norm(means,stds).ppf(0.05)
 
 print("Beginning endf plot...")
 
-for i in range(1, Nfiles):
+for i in range(2, Nfiles+1):
     sp = openmc.StatePoint(f'{statePointDirSandy}/statepoint.{i}.h5')
     Tal = sp.get_tally(id = TallyId).get_pandas_dataframe()
     thisMean = np.array(Tal['mean'])
@@ -132,7 +131,7 @@ if plotTendl:
 
     print("Beginning tendl plot...")
 
-    for i in range(1, Nfiles):
+    for i in range(2, Nfiles+1):
         sp = openmc.StatePoint(f'{statePointDirTendl}/statepoint.{i}.h5')
         Tal = sp.get_tally(id = TallyId).get_pandas_dataframe()
         thisMean = np.array(Tal['mean'])
