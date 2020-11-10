@@ -31,6 +31,7 @@ plotData = True
 plotTendl = True 
 plotJeff = True
 
+fontsize = 22
 
 useLeth = 0
 useSurf = 1
@@ -193,13 +194,15 @@ plt.yscale("log")
 plt.xscale("log")
 plt.xlim([10**3, 2*10**7])
 #plt.ylim([10**(-9), 1])
-plt.ylim([10**(-5), 10])
-plt.xlabel("Energy [eV]")
+plt.ylim([10**(-6), 1])
+
+plt.xticks(fontsize=fontsize); plt.yticks(fontsize=fontsize)
+plt.xlabel("Energy [eV]", fontsize=fontsize)
 if useLeth: 
-    plt.ylabel("Neutron current [ n/source/lethargy] ")
+    plt.ylabel("Neutron current [ n/source/lethargy] ", fontsize=fontsize)
 else:
-    plt.ylabel("Neutron current [ n/source] ")
+    plt.ylabel("Neutron current [ n/source] ", fontsize=fontsize)
 
 print("saving...")
-plt.savefig(f"oktav_ni_current.png", dpi=1200)
+plt.savefig(f"oktav_fe_current.png", dpi=1200)
 plt.clf()
