@@ -24,8 +24,8 @@ h1 = h5open("$(statePointDirSandy)/statepoint.$(index).h5", "r")
 h2 = h5open("$(statePointDirTendl)/statepoint.$(index).h5", "r")
 
 
-NouterS = 30
-NouterT = 30
+NouterS = 100
+NouterT = 100
 
 
 enEndf = read(h1,"tallies/filters/filter 1/bins")
@@ -42,17 +42,17 @@ valuesE    = read(h1,"tallies/tally 1/results")
 meansEndf  = valuesE[1,1,:]
 stdEndf    = valuesE[2,1,:]
 
-Spbox = N.(meansEndf, stdEndf)
+global Spbox = N.(meansEndf, stdEndf)
 
-meansS = meansEndf
+global meansS = meansEndf
 
 valuesT    = read(h2,"tallies/tally 1/results")
 meansTendl  = valuesT[1,1,:]
 stdTendl    = valuesT[2,1,:]
 
-meansT = meansTendl
+global meansT = meansTendl
 
-Tpbox = N.(meansTendl, stdTendl)
+global Tpbox = N.(meansTendl, stdTendl)
 
 println("Loading Sandy Data...")
 for i = 2:NouterS
@@ -61,8 +61,8 @@ for i = 2:NouterS
     meansEndf  = valuesE[1,1,:]
     stdEndf    = valuesE[2,1,:]
     thisBox    = N.(meansEndf, stdEndf)
-    Spbox = env.(Spbox, thisBox)
-    meansS = meansS + meansEndf
+    global Spbox = env.(Spbox, thisBox)
+    global meansS = meansS + meansEndf
 end
 
 meansS = meansS / NouterS
@@ -74,20 +74,21 @@ for i = 1:NouterT
     meansTendl  = valuesT[1,1,:]
     stdTendl    = valuesT[2,1,:]
     thisBox     = N.(meansTendl, stdTendl)
-    Tpbox = env.(Tpbox, thisBox)
-    meansT = meansT + meansTendl
+    global Tpbox = env.(Tpbox, thisBox)
+    global meansT = meansT + meansTendl
 end
 
 meansT = meansT /NouterT
 
-diff = convPerfect.(Spbox, Tpbox, op=/)
+diff = convPerfect.(Spbox, Tpbox, op=-)
+diff = (diff ./meansT) *100
 
 LI= 50
 dif = diff[LI:end]
 enPlot = enHi[LI:end]
 
-divMeans = meansS ./ meansT
-divMeans = divMeans[LI:end]
+divMeans = (meansS .- meansT) ./meansT
+divMeans = divMeans[LI:end] * 100
 
 lower5 = left.(cut.(dif,0.05))
 upper95 = right.(cut.(dif,0.95))
@@ -102,7 +103,7 @@ PyPlot.step(enPlot, upper95, where = "post", color = "blue")
 ax.fill_between(enPlot, lower5, upper95, alpha=0.3, color ="grey", step = "post", label = "95%")
 
 PyPlot.step(enPlot, divMeans, color ="red", where = "post", label = "ratio of means")
-PyPlot.plot([enPlot[1],enPlot[end]],[1,1], color = "black", label = "agreement")
+PyPlot.plot([enPlot[1],enPlot[end]],[0,0], color = "black", label = "agreement")
 
 PyPlot.xticks(fontsize=fontsize); PyPlot.yticks(fontsize=fontsize)
 PyPlot.legend(fontsize=fontsize)
@@ -150,17 +151,17 @@ Tpbox = Tpbox .* leth/surf
 meansS = meansS .* leth/surf
 meansT = meansT .* leth/surf
 
-diffMeansLowS = meansS[enIndexLow] ./ meanLow
-diffMeansHighS = meansS[enIndexHigh] ./ meanHigh
+diffMeansLowS = ((meansS[enIndexLow] .- meanLow) ./ meanLow ) * 100
+diffMeansHighS = ((meansS[enIndexHigh] .- meanHigh) ./ meanHigh) * 100
 
-diffMeansLowT = meansT[enIndexLow] ./ meanLow
-diffMeansHighT = meansT[enIndexHigh] ./ meanHigh
+diffMeansLowT = ((meansT[enIndexLow] .- meanLow) ./meanLow) * 100
+diffMeansHighT = ((meansT[enIndexHigh] .- meanHigh) ./ meanHigh) * 100
 
-diffLowS = convPerfect.(Spbox[enIndexLow], lowPb, op=/)
-diffHighS = convPerfect.(Spbox[enIndexHigh], highPb, op=/)
+diffLowS = (convPerfect.(Spbox[enIndexLow], lowPb, op=-) ./ meanLow) * 100
+diffHighS = (convPerfect.(Spbox[enIndexHigh], highPb, op=-) ./ meanHigh) * 100
 
-diffLowT = convPerfect.(Tpbox[enIndexLow], lowPb, op=/)
-diffHighT = convPerfect.(Tpbox[enIndexHigh], highPb, op=/)
+diffLowT = (convPerfect.(Tpbox[enIndexLow], lowPb, op=-) ./ meanLow) *100
+diffHighT = (convPerfect.(Tpbox[enIndexHigh], highPb, op=-) ./ meanHigh) *100
 
 lower5LS = left.(cut.(diffLowS,0.05))
 upper95LS = right.(cut.(diffLowS,0.95))
@@ -185,10 +186,12 @@ ax = fig.add_subplot()
 [PyPlot.plot([highEns[i], highEns[i]], [lower5HT[i], upper95HT[i]], alpha = 0.5, color= "blue", linewidth = 1.6) for i = 1:length(highEns)]
 
 PyPlot.scatter(lowEns, diffMeansLowS, color = "red")
-PyPlot.scatter(highEns, diffMeansHighS, color = "red", label = "exp / endf")
+PyPlot.scatter(highEns, diffMeansHighS, color = "red", label = "endf - exp")
 
 PyPlot.scatter(lowEns, diffMeansLowT, color = "blue")
-PyPlot.scatter(highEns, diffMeansHighT, color = "blue", label = "exp / tendl")
+PyPlot.scatter(highEns, diffMeansHighT, color = "blue", label = "tendl - exp")
+
+#PyPlot.plot([enPlot[1],enPlot[end]],[0,0], color = "black", label = "agreement")
 
 PyPlot.xticks(fontsize=fontsize); PyPlot.yticks(fontsize=fontsize)
 
@@ -197,10 +200,10 @@ PyPlot.legend(fontsize=fontsize)
 
 PyPlot.legend(fontsize=fontsize)
 PyPlot.xscale("log")
-PyPlot.yscale("log")
+#PyPlot.yscale("log")
 PyPlot.xlim([5*10^3, 5*10^7])
 PyPlot.plot([5*10^3, 5*10^7], [1,1], "black")
 PyPlot.xlabel("Energy [eV]", fontsize =fontsize)
-PyPlot.ylabel("ratio of exp to simulation", fontsize=fontsize)
+PyPlot.ylabel("% difference", fontsize=fontsize)
 
 PyPlot.savefig("ratioDifferenceToExp.png", dpi = 1200)
