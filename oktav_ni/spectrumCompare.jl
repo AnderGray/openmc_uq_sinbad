@@ -26,8 +26,8 @@ h1 = h5open("$(statePointDirSandy)/statepoint.$(index).h5", "r")
 h2 = h5open("$(statePointDirTendl)/statepoint.$(index).h5", "r")
 
 
-NouterS = 100
-NouterT = 100
+NouterS = 500
+NouterT = 500
 
 
 enEndf = read(h1,"tallies/filters/filter 1/bins")
@@ -87,7 +87,7 @@ if loadData
     @save "compareSave.jld2" Spbox Tpbox meansS meansT
 
 else
-    
+
     @load "compareSave.jld2" Spbox Tpbox meansS meansT
 
     diff = convPerfect.(Spbox, Tpbox, op=-)

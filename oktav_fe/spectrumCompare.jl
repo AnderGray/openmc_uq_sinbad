@@ -1,12 +1,12 @@
 include("/cosma/home/dp163/dc-gray2/opt/juliaStuff/ProbabilityBoundsAnalysis.jl/src/ProbabilityBoundsAnalysis.jl")
 using Main.ProbabilityBoundsAnalysis
 
-using HDF5, Statistics, PyPlot, XLSX
+using HDF5, Statistics, PyPlot, XLSX, JLD2
 
 simDir = pwd()
 
-SIMNAME1 = "endfNi"
-SIMNAME2 = "tendlNi"
+SIMNAME1 = "endfFe"
+SIMNAME2 = "tendlFe"
 statePointDirSandy = "$(simDir)/statepoints-$(SIMNAME1)"
 statePointDirTendl = "$(simDir)/statepoints-$(SIMNAME2)"
 
@@ -44,17 +44,17 @@ valuesE    = read(h1,"tallies/tally 1/results")
 meansEndf  = valuesE[1,1,:]
 stdEndf    = valuesE[2,1,:]
 
-Spbox = N.(meansEndf, stdEndf)
+global Spbox = N.(meansEndf, stdEndf)
 
-meansS = meansEndf
+global meansS = meansEndf
 
 valuesT    = read(h2,"tallies/tally 1/results")
 meansTendl  = valuesT[1,1,:]
 stdTendl    = valuesT[2,1,:]
 
-meansT = meansTendl
+global meansT = meansTendl
 
-Tpbox = N.(meansTendl, stdTendl)
+global Tpbox = N.(meansTendl, stdTendl)
 
 println("Loading Sandy Data...")
 for i = 2:NouterS
@@ -63,11 +63,11 @@ for i = 2:NouterS
     meansEndf  = valuesE[1,1,:]
     stdEndf    = valuesE[2,1,:]
     thisBox    = N.(meansEndf, stdEndf)
-    Spbox = env.(Spbox, thisBox)
-    meansS = meansS + meansEndf
+    global Spbox = env.(Spbox, thisBox)
+    global meansS = meansS + meansEndf
 end
 
-meansS = meansS / NouterS
+global meansS = meansS / NouterS
 
 println("Loading Tendl Data...")
 for i = 1:NouterT
@@ -76,11 +76,11 @@ for i = 1:NouterT
     meansTendl  = valuesT[1,1,:]
     stdTendl    = valuesT[2,1,:]
     thisBox     = N.(meansTendl, stdTendl)
-    Tpbox = env.(Tpbox, thisBox)
-    meansT = meansT + meansTendl
+    global Tpbox = env.(Tpbox, thisBox)
+    global meansT = meansT + meansTendl
 end
 
-meansT = meansT /NouterT
+global meansT = meansT /NouterT
 
 
 if loadData
