@@ -150,7 +150,7 @@ Tpbox = Tpbox .* leth/surf
 
 meansS = meansS .* leth/surf
 meansT = meansT .* leth/surf
-
+#=
 diffMeansLowS = ((meansS[enIndexLow] .- meanLow) ./ meanLow ) * 100
 diffMeansHighS = ((meansS[enIndexHigh] .- meanHigh) ./ meanHigh) * 100
 
@@ -162,6 +162,19 @@ diffHighS = (convPerfect.(Spbox[enIndexHigh], highPb, op=-) ./ meanHigh) * 100
 
 diffLowT = (convPerfect.(Tpbox[enIndexLow], lowPb, op=-) ./ meanLow) *100
 diffHighT = (convPerfect.(Tpbox[enIndexHigh], highPb, op=-) ./ meanHigh) *100
+=#
+
+diffMeansLowS = ((meansS[enIndexLow] .- meanLow) ./ meansS[enIndexLow] ) * 100
+diffMeansHighS = ((meansS[enIndexHigh] .- meanHigh) ./ meansS[enIndexHigh]) * 100
+
+diffMeansLowT = ((meansT[enIndexLow] .- meanLow) ./meansT[enIndexLow]) * 100
+diffMeansHighT = ((meansT[enIndexHigh] .- meanHigh) ./ meansT[enIndexHigh] ) * 100
+
+diffLowS = (convPerfect.(Spbox[enIndexLow], lowPb, op=-) ./ meansS[enIndexLow]) * 100
+diffHighS = (convPerfect.(Spbox[enIndexHigh], highPb, op=-) ./ meansS[enIndexHigh]) * 100
+
+diffLowT = (convPerfect.(Tpbox[enIndexLow], lowPb, op=-) ./ meansT[enIndexLow]) *100
+diffHighT = (convPerfect.(Tpbox[enIndexHigh], highPb, op=-) ./ meansT[enIndexHigh]) *100
 
 lower5LS = left.(cut.(diffLowS,0.05))
 upper95LS = right.(cut.(diffLowS,0.95))
