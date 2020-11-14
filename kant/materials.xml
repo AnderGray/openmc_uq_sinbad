@@ -41,7 +41,7 @@
     <nuclide ao="0.0091" name="Ni64" />
   </material>
   <material id="7" name="M7">
-    <density units="atom/b-cm" value="0" />
+    <density units="atom/b-cm" value="1e-24" />
     <nuclide ao="1.0" name="Ni58" />
   </material>
   <material id="8" name="M8">

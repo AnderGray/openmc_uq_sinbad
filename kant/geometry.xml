@@ -43,6 +43,9 @@
   <surface boundary="transmission" coeffs="0.0 0.0 0.0 0.0625" id="42" type="x-cone" />
   <surface boundary="transmission" coeffs="1.732 -1.0 0.0 4.4" id="43" type="plane" />
   <surface boundary="transmission" coeffs="4.1" id="44" type="x-plane" />
+  <surface boundary="transmission" coeffs="0.0 0.0 0.0 10.0" id="45" type="sphere" />
+  <surface boundary="transmission" coeffs="0.0 0.0 0.0 15.0" id="46" type="sphere" />
+  <surface boundary="transmission" coeffs="0.0 0.0 0.0 22.0" id="47" type="sphere" />
   <cell id="1" material="1" region=" ( -4 9 -18 )  |  ( -9 -24 ) " universe="0" />
   <cell id="2" material="2" region=" -4 18 -10 -1" universe="0" />
   <cell id="3" material="1" region=" ( -1 4 9 )  |  ( -1 7 -9 8 24 ) " universe="0" />
