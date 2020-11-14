@@ -1,0 +1,52 @@
+<materials>
+  <material id="1" name="M1">
+    <density units="g/cc" value="8.91" />
+    <nuclide ao="0.6917" name="Cu63" />
+    <nuclide ao="0.3083" name="Cu65" />
+  </material>
+  <material id="2" name="M2">
+    <density units="g/cc" value="2.65" />
+    <nuclide name="Al27" wo="0.97" />
+    <nuclide name="Mg24" wo="0.023998200343136655" />
+    <nuclide name="Mg25" wo="0.002916606194380452" />
+    <nuclide name="Mg26" wo="0.0030876763653969975" />
+  </material>
+  <material id="3" name="M3">
+    <density units="g/cc" value="7.9" />
+    <nuclide name="Fe56" wo="0.6993" />
+    <nuclide name="Ni58" wo="0.09" />
+    <nuclide name="Cr52" wo="0.18" />
+    <nuclide name="Mn55" wo="0.02" />
+    <nuclide name="C0" wo="0.0007" />
+    <nuclide name="Si28" wo="0.01" />
+  </material>
+  <material id="4" name="M4">
+    <density units="g/cc" value="8.3" />
+    <nuclide ao="0.6873813116168282" name="Cu63" />
+    <nuclide ao="0.30639841454471417" name="Cu65" />
+    <nuclide ao="0.0015200913574905854" name="Pb206" />
+    <nuclide ao="0.0013940837844354447" name="Pb207" />
+    <nuclide ao="0.003306098696531662" name="Pb208" />
+  </material>
+  <material id="5" name="M5">
+    <density units="atom/b-cm" value="0.117" />
+    <nuclide ao="1.0" name="Be9" />
+  </material>
+  <material id="6" name="M6">
+    <density units="g/cc" value="8.9" />
+    <nuclide ao="0.6827" name="Ni58" />
+    <nuclide ao="0.261" name="Ni60" />
+    <nuclide ao="0.0113" name="Ni61" />
+    <nuclide ao="0.0359" name="Ni62" />
+    <nuclide ao="0.0091" name="Ni64" />
+  </material>
+  <material id="7" name="M7">
+    <density units="atom/b-cm" value="0" />
+    <nuclide ao="1.0" name="Ni58" />
+  </material>
+  <material id="8" name="M8">
+    <density units="g/cc" value="0.001293" />
+    <nuclide ao="0.2" name="O16" />
+    <nuclide ao="0.8" name="N14" />
+  </material>
+</materials>

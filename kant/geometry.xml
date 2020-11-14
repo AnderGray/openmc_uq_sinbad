@@ -1,0 +1,68 @@
+<geometry>
+  <surface boundary="transmission" coeffs="0.0 0.0 0.0 2.7" id="1" type="sphere" />
+  <surface boundary="transmission" coeffs="0.0 0.0 0.0 4.5" id="2" type="sphere" />
+  <surface boundary="transmission" coeffs="0.0 0.0 0.0 4.9" id="3" type="sphere" />
+  <surface boundary="transmission" coeffs="0.0 0.0 2.0" id="4" type="x-cylinder" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -7.839999999999999" id="5" type="quadric" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -2.8899999999999997" id="6" type="quadric" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -1.9599999999999997" id="7" type="quadric" />
+  <surface boundary="transmission" coeffs="0.24999999999999978 0.7500000000000001 1.0 -0.8660254037844384 2.28522203787226e-16 6.123233995736769e-17 0.0 0.0 0.0 -2.25" id="8" type="quadric" />
+  <surface boundary="vacuum" coeffs="0.0" id="9" type="x-plane" />
+  <surface boundary="transmission" coeffs="2.43" id="10" type="x-plane" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -22.090000000000003" id="11" type="quadric" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -19.360000000000003" id="12" type="quadric" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -15.209999999999999" id="13" type="quadric" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -14.0625" id="14" type="quadric" />
+  <surface boundary="transmission" coeffs="1.732 -1.0 0.0 0.0" id="15" type="plane" />
+  <surface boundary="transmission" coeffs="1.732 -1.0 0.0 1.4" id="16" type="plane" />
+  <surface boundary="transmission" coeffs="1.732 -1.0 0.0 3.2" id="17" type="plane" />
+  <surface boundary="transmission" coeffs="0.55" id="18" type="x-plane" />
+  <surface boundary="transmission" coeffs="3.8" id="19" type="x-plane" />
+  <surface boundary="transmission" coeffs="4.0" id="20" type="x-plane" />
+  <surface boundary="transmission" coeffs="0.693 -0.4 0.0 3.9115" id="21" type="sphere" />
+  <surface boundary="transmission" coeffs="0.693 -0.4 0.0 3.7583" id="22" type="sphere" />
+  <surface boundary="transmission" coeffs="0.24999999999999978 0.7500000000000001 1.0 -0.8660254037844384 2.28522203787226e-16 6.123233995736769e-17 0.0 0.0 0.0 -2.8899999999999997" id="23" type="quadric" />
+  <surface boundary="transmission" coeffs="6.7082 0.0 0.0 7.0" id="24" type="sphere" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -8.042895999999999" id="25" type="quadric" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -3.61" id="26" type="quadric" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -4.0" id="27" type="quadric" />
+  <surface boundary="transmission" coeffs="1.732 -1.0 0.0 -6.8" id="28" type="plane" />
+  <surface boundary="transmission" coeffs="1.732 -1.0 0.0 -10.8" id="29" type="plane" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -2.25" id="30" type="quadric" />
+  <surface boundary="transmission" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -8.7025" id="31" type="quadric" />
+  <surface boundary="transmission" coeffs="0.0 0.0 0.0 25.0" id="32" type="sphere" />
+  <surface boundary="vacuum" coeffs="0.0 0.0 0.0 5.0" id="33" type="sphere" />
+  <surface boundary="vacuum" coeffs="0.0 0.0 0.0 22.0" id="34" type="sphere" />
+  <surface boundary="transmission" coeffs="0.24999999999999978 0.7500000000000001 1.0 -0.8660254037844384 2.28522203787226e-16 6.123233995736769e-17 0.0 0.0 0.0 -5.289999999999999" id="35" type="quadric" />
+  <surface boundary="transmission" coeffs="0.24999999999999978 0.7500000000000001 1.0 -0.8660254037844384 2.28522203787226e-16 6.123233995736769e-17 0.0 0.0 0.0 -6.25" id="36" type="quadric" />
+  <surface boundary="transmission" coeffs="1.732 1.0 0.0 -13.8" id="37" type="plane" />
+  <surface boundary="transmission" coeffs="1.732 1.0 0.0 -15.0" id="38" type="plane" />
+  <surface boundary="vacuum" coeffs="0.2500000000000001 0.7500000000000001 1.0 0.8660254037844389 2.28522203787226e-16 1.83697019872103e-16 0.0 0.0 0.0 -9.0" id="39" type="quadric" />
+  <surface boundary="transmission" coeffs="0.0 0.0 0.0 300.0" id="40" type="sphere" />
+  <surface boundary="transmission" coeffs="0.0 0.0 0.0 0.25" id="41" type="x-cone" />
+  <surface boundary="transmission" coeffs="0.0 0.0 0.0 0.0625" id="42" type="x-cone" />
+  <surface boundary="transmission" coeffs="1.732 -1.0 0.0 4.4" id="43" type="plane" />
+  <surface boundary="transmission" coeffs="4.1" id="44" type="x-plane" />
+  <cell id="1" material="1" region=" ( -4 9 -18 )  |  ( -9 -24 ) " universe="0" />
+  <cell id="2" material="2" region=" -4 18 -10 -1" universe="0" />
+  <cell id="3" material="1" region=" ( -1 4 9 )  |  ( -1 7 -9 8 24 ) " universe="0" />
+  <cell id="4" material="void" region=" ( -1 -8 -7 24 )  |  ( 1 -8 -27 -9 )  |  ( 8 -7 -3 -9 )  |  ( -1 -8 7 24 ) " universe="0" />
+  <cell id="5" material="void" region=" ( -7 29 3 -15 )  |  ( -30 -29 -34 ) " universe="0" />
+  <cell id="6" material="void" region=" ( 1 27 -15 -2 -14 )  |  ( -1 10 )  |  ( 1 -14 -22 -19 15 )  |  ( -14 22 15 -16 )  |  ( -2 14 -8 -9 )  |  ( -5 27 -9 2 -3 )  |  ( -8 2 -3 -9 ) " universe="0" />
+  <cell id="7" material="void" region=" -5 27 -9 3 -34" universe="0" />
+  <cell id="8" material="void" region=" ( -38 -35 -34 )  |  ( -8 3 38 -9 ) " universe="0" />
+  <cell id="9" material="1" region=" ( 7 -6 8 1 -9 -3 )  |  ( 6 8 1 -9 28 -27 )  |  ( 26 -3 -9 -28 -27 ) " universe="0" />
+  <cell id="10" material="1" region=" ( 7 -6 3 -9 29 )  |  ( 26 -34 -9 3 -27 )  |  ( 30 -6 -29 -34 ) " universe="0" />
+  <cell id="11" material="void" region=" ( -26 6 -9 -28 -3 ) " universe="0" />
+  <cell id="12" material="void" region=" ( -26 6 -9 3 -34 ) " universe="0" />
+  <cell id="13" material="3" region=" ( 2 -3 8 5 -15 -14 )  |  ( 14 -3 -11 -15 8 )  |  ( 12 -11 -3 15 -17 )  |  ( 11 -23 8 -3 -9 ) " universe="0" />
+  <cell id="14" material="4" region=" 13 -12 16 -17" universe="0" />
+  <cell id="15" material="3" region=" ( 13 -12 15 -16 )  |  ( 22 -21 -19 17 )  |  ( -14 22 16 -17 )  |  ( 14 -13 15 22 -17 )  |  ( 14 -22 )  |  ( 19 -20 -21 )  |  ( 17 -2 21 -13 -20 ) " universe="0" />
+  <cell id="16" material="3" region=" ( 8 -23 -9 3 37 )  |  ( 38 -37 8 -36 )  |  ( 35 -36 -38 -34 ) " universe="0" />
+  <cell id="17" material="3" region=" 5 -31 -9 3 -34" universe="0" />
+  <cell id="18" material="6" region=" -41 20 -44" universe="0" />
+  <cell id="19" material="8" region=" (  ( 11 -3 23 -9 )  |  ( 11 -3 9 )  |  ( 13 17 -3 -10 )  |  ( 21 -13 44 -3 )  |  ( 2 -13 -20 25 -3 17 )  |  ( -25 21 -20 -3 17 )  |  ( -41 44 -21 )  |  ( 41 -3 -44 20 )  |  ( 41 44 -21 )  |  ( 13 17 -3 -20 10 )  |  ( 13 44 -3 )  )   ~  (  ( 13 -12 15 -16 )  |  ( 22 -21 -19 17 )  |  ( -14 22 16 -17 )  |  ( 14 -13 15 22 -17 )  |  ( 14 -22 )  |  ( 19 -20 -21 )  |  ( 17 -2 21 -13 -20 )  ) " universe="0" />
+  <cell id="20" material="8" region=" ( 23 31 -9 3 -33 )  |  ( 9 3 -33 )  |  ( 23 31 -9 -36 37 33 )  |  ( 36 31 -39 -9 33 -34 ) " universe="0" />
+  <cell id="21" material="5" region=" ( 36 39 -9 33 -34 )  |  ( 9 33 -34 ) " universe="0" />
+  <cell id="22" material="void" region=" 34" universe="0" />
+</geometry>
