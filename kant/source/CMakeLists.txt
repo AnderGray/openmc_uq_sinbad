@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
 project(openmc_sources CXX)
-add_library(source SHARED oktav_ni_source.cpp)
+add_library(source SHARED kant_source.cpp)
 find_package(OpenMC REQUIRED HINTS ${OPENMC_HOME})
 target_link_libraries(source OpenMC::libopenmc)
