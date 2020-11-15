@@ -48,39 +48,41 @@ class Source : public openmc::CustomSource
   double interplTheta = 0;
   double a = 0;
   double b = 0;
+  int ind = 0;
 
   /* how to get random number */
   double rnd = openmc::prn(seed);
   /* check which theta will be used depending on the distribution*/
-  for(int i = 1; i < 8; i++){
-    if(rnd <= angleDistribution[i][1] && rnd > angleDistribution[i-1][1]){
+  for(int i = 1; i < 37; i++){
+    if(rnd <= angleCdf[i] && rnd > angleCdf[i-1]){
 
-      a = angleDistribution[i-1][1]; b = angleDistribution[i][1];
+      a = angleCdf[i-1]; b = angleCdf[i];
 
       scaledR = (rnd -  a)/(b - a);
 
-      interplTheta = angleDistribution[i-1][0] + scaledR * (angleDistribution[i][0] - angleDistribution[i-1][0]);
+      interplTheta = angleDist[i-1] + scaledR * (angleDist[i] - angleDist[i-1]);
       theta = std::acos(interplTheta);
+      ind = i-1;
       break;
     }
   };  
 
   double phi = openmc::prn(seed)*2.*M_PI;
 
-  particle.u[0] = std::sin(theta)*std::cos(phi);
-  particle.u[1] = std::cos(theta);
-  particle.u[2] = std::sin(theta)*std::sin(phi);
-    
-  rnd = openmc::prn(seed);
-  for(int i = 1; i < 83; i++){
-    if(rnd <= energyCdf[0][i] && rnd > energyCdf[0][i-1]){
-      /* energy between the lower and upper value sampled randomly*/
-      double En1 = openmc::prn(seed)*(energyDistributionHigh[0][i-1]-energyDistributionLow[0][i-1]) + energyDistributionLow[0][i-1];
-      particle.E = 1.e6 * En1 * (14.1 + 0.7 * interplTheta )/14.8;      // Angle-energy shifting. Found in Documentation 3.a
-      break;
-    }
-  }
+  double x = std::cos(theta);
+  double y = std::sin(theta)*std::cos(phi);
+  double z = std::sin(theta)*std::sin(phi);
 
+  double angle = std::atan(VEC[1]/VEC[0]);  // Assumes the 3rd component is 0. Rotation about z
+
+  // Should remain unit vector
+  particle.u[0] = x * std::cos(angle) - y * std::sin(angle);
+  particle.u[1] = x * std::sin(angle) + y * std::cos(angle);
+  particle.u[2] = z;
+  
+  double En1 = openmc::prn(seed)*(energyDistHigh[ind]-energyDistLow[ind]) + energyDistLow[ind];
+
+  particle.E = 1.e6 * En1;
   particle.particle = openmc::Particle::Type::neutron;
   particle.wgt = 1.0;
   particle.delayed_group = 0;
