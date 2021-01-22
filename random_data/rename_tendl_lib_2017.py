@@ -16,7 +16,7 @@ from pathlib import Path
 import openmc.data
 
 
-
+directory = Path.cwd()
 atomic_dict = openmc.data.ATOMIC_NUMBER
 
 print("Making neutron file")
@@ -27,7 +27,7 @@ os.system("cp -r neutron_file/*/*/lib/endf/* neutron")
 
 os.system("cd neutron")
 
-print("Renaming files"
+print("Renaming files")
 
 directory = Path.cwd()
 
