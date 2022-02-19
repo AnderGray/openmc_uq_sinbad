@@ -38,7 +38,7 @@ for filename in os.listdir(directory):
             this = filename[i]
         #if not this == ".": prefix = this
 
-        newFile = f"n-{int(atomic_dict[atomic_sym]):03}_{atomic_sym}_{massNumber}.endf"
+        newFile = f"n-{int(atomic_dict[atomic_sym]):03}_{atomic_sym}_{int(massNumber):03}.endf"
         os.rename(filename, newFile)
 
 os.rename("n-006_C_012.endf", "n-006_C_000.endf")
