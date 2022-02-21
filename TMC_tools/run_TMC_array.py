@@ -164,5 +164,6 @@ def prepSim(mats, sets, geo, index):
 for i in range(1,Nouter+1):
     prepSim(copy.deepcopy(materials), copy.deepcopy(settings), copy.deepcopy(geometry), i)
 
-command = f"sbatch -J {simname}_UQ_array --array=1-{Nouter}  openmc_array.sh {simname} {Ninner}"
+command = f"sbatch -J {simname}_UQ_array --array=[1-{Nouter}]%200 openmc_array.sh {simname} {Ninner}"
 os.system(command)
+

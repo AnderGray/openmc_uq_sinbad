@@ -8,6 +8,7 @@
 #SBATCH -o output
 #SBATCH -D ./
 #SBATCH --export=ALL
+#SBATCH --output=array_%A-%a.out    # Standard output and error log
 
 
 module purge
@@ -37,7 +38,7 @@ echo Done with OPENMC, processing
 
 mv statepoint.$2.h5 ../statepoints-$1/statepoint.$SLURM_ARRAY_TASK_ID.h5
 cd ..
-rm -r $1-$2
+rm -r $1-$SLURM_ARRAY_TASK_ID
 
 echo
 echo ---------------
