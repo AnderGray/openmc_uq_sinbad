@@ -54,7 +54,7 @@ parser.add_argument("-s", "--N_nodes", default=None,
 args = parser.parse_args()
 
 statePointDir = args.destination
-Nsamps = args.Nsamples
+Nsamps = int(args.Nsamples)
 TallyId = int(args.tally)
 name = args.name
 n_cores = int(args.N_nodes)
@@ -125,7 +125,7 @@ def get_range_and_mean(indecies, TallyId, statePointDir):
         Upper = np.maximum(Upper, thisUpper)
         Lower = np.minimum(Lower, thisLower)
 
-    means = means/Nsamps
+    means = means/len(indecies)
 
     return means, Lower, Upper
 
@@ -169,7 +169,7 @@ leg = plt.legend(fontsize=fontsize)
 
 plt.yscale("log")
 plt.xscale("log")
-plt.xlim([10**(-5), 2*10**7])
+plt.xlim([10**(-1), 2*10**7])
 plt.ylim([10**(-6), 1.5])
 
 plt.xticks(fontsize=fontsize); plt.yticks(fontsize=fontsize)
