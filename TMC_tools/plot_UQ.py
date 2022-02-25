@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import pathos.multiprocessing as mp
 import h5py
 import os
 from shutil import copyfile
@@ -48,15 +48,18 @@ parser.add_argument("-t", "--tally", default=None,
                     help="Tally ID to plot")
 parser.add_argument("-nm", "--name", default=None, 
                     help="name of the plot")
+parser.add_argument("-s", "--N_nodes", default=None, 
+                    help="name of the plot")
 
 args = parser.parse_args()
 
-script_dir = Path.cwd()
-
 statePointDir = args.destination
-Nsamps = args.Nsamps
+Nsamps = args.Nsamples
 TallyId = int(args.tally)
 name = args.name
+n_cores = int(args.N_nodes)
+
+script_dir = Path.cwd()
 
 if statePointDir == None:
     statePointDir = script_dir
@@ -70,7 +73,7 @@ if Nsamps == None:
 if name == None:
     name = f"UQ_sim_tal_{TallyId}"
 else:
-    name = f"{name}_{TallyId}"
+    name = f"{name}_tal_{TallyId}"
 
 ###
 #   Plot parameters
@@ -91,56 +94,83 @@ Tal = sp1.get_tally(id = TallyId).get_pandas_dataframe()
 enHi = Tal['energy high [eV]']
 enLo = Tal['energy low [eV]']
 
-means = np.array(Tal['mean'])
+def get_range_and_mean(indecies, TallyId, statePointDir):
+    index = indecies[0]
+    sp1 = openmc.StatePoint(f'{statePointDir}/statepoint.{index}.h5')
 
-stds = np.array(Tal['std. dev.'])
+    Tal = sp1.get_tally(id = TallyId).get_pandas_dataframe()
 
-Upper = norm(means,stds).ppf(0.95)
-Lower = norm(means,stds).ppf(0.05)
+    means = np.array(Tal['mean'])
 
-Upper[np.isnan(Upper)] = means[np.isnan(Upper)]
-Lower[np.isnan(Lower)] = means[np.isnan(Lower)]
+    stds = np.array(Tal['std. dev.'])
 
-print("Beginning plot...")
+    Upper = norm(means,stds).ppf(0.95)
+    Lower = norm(means,stds).ppf(0.05)
 
-for i in range(2, Nsamps+1):
-    sp = openmc.StatePoint(f'{statePointDir}/statepoint.{i}.h5')
-    Tal = sp.get_tally(id = TallyId).get_pandas_dataframe()
-    thisMean = np.array(Tal['mean'])
-    thisStd = np.array(Tal['std. dev.'])
-    thisUpper = norm(thisMean,thisStd).ppf(0.95)
-    thisLower = norm(thisMean,stds).ppf(0.05)
+    Upper[np.isnan(Upper)] = means[np.isnan(Upper)]
+    Lower[np.isnan(Lower)] = means[np.isnan(Lower)]
 
-    thisUpper[np.isnan(thisUpper)] = thisMean[np.isnan(thisUpper)]
-    thisLower[np.isnan(thisLower)] = thisMean[np.isnan(thisLower)]
+    for i in indecies[1:]:
+        sp = openmc.StatePoint(f'{statePointDir}/statepoint.{i}.h5')
+        Tal = sp.get_tally(id = TallyId).get_pandas_dataframe()
+        thisMean = np.array(Tal['mean'])
+        thisStd = np.array(Tal['std. dev.'])
+        thisUpper = norm(thisMean,thisStd).ppf(0.95)
+        thisLower = norm(thisMean,stds).ppf(0.05)
 
-    means = means + thisMean
-    Upper = np.maximum(Upper, thisUpper)
-    Lower = np.minimum(Lower, thisLower)
+        thisUpper[np.isnan(thisUpper)] = thisMean[np.isnan(thisUpper)]
+        thisLower[np.isnan(thisLower)] = thisMean[np.isnan(thisLower)]
 
-means = means/Nsamps
+        means = means + thisMean
+        Upper = np.maximum(Upper, thisUpper)
+        Lower = np.minimum(Lower, thisLower)
+
+    means = means/Nsamps
+
+    return means, Lower, Upper
+
+
+N_chunks = int(Nsamps/n_cores)
+
+inds = list(range(1,Nsamps+1))
+chunks = [inds[x:x+N_chunks] for x in range(0, len(inds), N_chunks)]
+
+
+def parallel_function(ind):
+    return get_range_and_mean(ind, TallyId, statePointDir)
+
+Pool = mp.Pool(n_cores)
+
+results = Pool.map(parallel_function, chunks)
+
+means1 = results[0][0]
+Lower1 = results[0][1]
+Upper1 = results[0][2]
+
+for i in range(1,len(results)):
+
+    means1 = means1 + results[i][0]
+    Lower1 = np.minimum(Lower1, results[i][1])
+    Upper1 = np.maximum(Upper1, results[i][1])
+
+means1 = means1 / len(results)
+Lower1 = np.maximum(Lower1, 0)
 
 fig = plt.figure(figsize=(19, 15))
-#ax = fig.add_subplot()
-
-meansEndf = means
-UpperEndf = Upper
-LowerEndf = Lower
 
 
-plt.step(enHi, meansEndf,color = "green", alpha = 1,linewidth = 2, label='ENDF/B-VII.1', where = "post")
-plt.step(enHi, UpperEndf,color = "red", alpha = 1,linewidth = 1, where = "post")
-plt.step(enHi, LowerEndf,color = "red", alpha = 1,linewidth = 1, where = "post")
-plt.fill_between(enHi, LowerEndf, UpperEndf,alpha=0.3, color ="red", step = "post" , label='ENDF 95%')
+plt.step(enHi, means1,color = "green", alpha = 1,linewidth = 2, where = "post")
+plt.step(enHi, Upper1,color = "red", alpha = 1,linewidth = 1, where = "post")
+plt.step(enHi, Lower1,color = "red", alpha = 1,linewidth = 1, where = "post")
+plt.fill_between(enHi, Lower1, Upper1,alpha=0.3, color ="red", step = "post" , label='95%')
 
 
 leg = plt.legend(fontsize=fontsize)
 
 plt.yscale("log")
 plt.xscale("log")
-plt.xlim([10**3, 2*10**7])
-#plt.ylim([10**(-12), 1])
-plt.ylim([10**(-6), 1])
+plt.xlim([10**(-5), 2*10**7])
+plt.ylim([10**(-6), 1.5])
 
 plt.xticks(fontsize=fontsize); plt.yticks(fontsize=fontsize)
 plt.xlabel("Energy [eV]", fontsize=fontsize)
@@ -150,6 +180,4 @@ plt.ylabel("Neutron flux", fontsize=fontsize)
 print("saving...")
 plt.savefig(f"{name}.png", dpi=800)
 plt.clf()
-
-
 
