@@ -132,10 +132,11 @@ def plot_this(i, res):
 
     n_bins = int(len(samps)/10)
     plt.figure()
-    plt.hist(samps, n_bins, density = True)
+    plt.hist(samps, n_bins)
     plt.title(this_title, fontsize = fontsize)
     plt.xticks(fontsize=labelsize); plt.yticks(fontsize=labelsize)
     #plt.xlabel("Neutron flux", fontsize=labelsize)
+    plt.ticklabel_format(axis="x", style="sci", scilimits=(0,0))
     plt.tight_layout()
     plt.savefig(f"{this_name}.png", dpi=800)
 
