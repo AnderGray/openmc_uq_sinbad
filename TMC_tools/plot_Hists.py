@@ -54,7 +54,6 @@ parser.add_argument("-s", "--N_nodes", default=None,
 args = parser.parse_args()
 
 statePointDir = args.destination
-Nsamps = int(args.Nsamples)
 TallyId = int(args.tally)
 name = args.name
 n_cores = int(args.N_nodes)
@@ -66,9 +65,11 @@ if statePointDir == None:
 else:
     statePointDir = Path(statePointDir).resolve()
 
-if Nsamps == None:
+if args.Nsamples == None:
     files = os.listdir(statePointDir)
     Nsamps = sum([f.startswith("statepoint") for f in files])
+else:
+    Nsamps = int(args.Nsamples)
 
 if name == None:
     name = f"UQ_sim_tal_{TallyId}"
