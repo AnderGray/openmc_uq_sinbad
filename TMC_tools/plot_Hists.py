@@ -163,3 +163,18 @@ res = np.vstack(np.array(results))
 
 inds = range(len(enHi))
 [plot_this(i, res) for i in inds]
+
+sample_mean = np.mean(res, axis = 0)
+sample_std = np.std(res, axis = 0)
+
+print("-----------")
+print()
+print("sample mean:")
+print(sample_mean)
+print()
+print("-----------")
+print()
+print("sample std:")
+print(sample_std)
+print()
+print("-----------")
