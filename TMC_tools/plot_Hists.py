@@ -104,16 +104,19 @@ def get_samples(indecies, TallyId, statePointDir):
     Tal = sp1.get_tally(id = TallyId).get_pandas_dataframe()
 
     means = np.array(Tal['mean'])
+    stds = np.array(Tal['std. dev.'])
 
 
     for i in indecies[1:]:
         sp = openmc.StatePoint(f'{statePointDir}/statepoint.{i}.h5')
         Tal = sp.get_tally(id = TallyId).get_pandas_dataframe()
         thisMean = np.array(Tal['mean'])
+        thisStds = np.array(Tal['std. dev.'])
 
         means = np.vstack((means,thisMean))
+        stds = np.vstack((stds,thisStds))
 
-    return means
+    return means, stds
 
 
 def plot_this(i, res):
@@ -159,13 +162,18 @@ Pool = mp.Pool(n_cores)
 
 results = Pool.map(parallel_function, chunks)
 
-res = np.vstack(np.array(results))
+mean_samps, stds = zip(*results)
+
+means = np.vstack(np.array(mean_samps))
+stat_errs = np.vstack(np.array(stds))
 
 inds = range(len(enHi))
-[plot_this(i, res) for i in inds]
+[plot_this(i, means) for i in inds]
 
-sample_mean = np.mean(res, axis = 0)
-sample_std = np.std(res, axis = 0)
+sample_mean = np.mean(means, axis = 0)
+sample_std = np.std(means, axis = 0)
+
+av_stat = np.mean(stat_errs, axis = 0)
 
 print("-----------")
 print()
@@ -176,5 +184,10 @@ print("-----------")
 print()
 print("sample std:")
 print(sample_std)
+print()
+print("-----------")
+print()
+print("av stat error:")
+print(av_stat)
 print()
 print("-----------")
