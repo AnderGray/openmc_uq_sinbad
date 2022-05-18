@@ -177,7 +177,10 @@ mean_data = pandas.DataFrame(
         'stds': stat_errs
     }
 )
+
+mean_data = pandas.DataFrame(means, columns = enHi.values)
 mean_data.to_csv(f'{simname}_means.csv')
+
 '''
 with open(f'{simname}_moments.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.DictWriter(f, fieldnames=field_names)
