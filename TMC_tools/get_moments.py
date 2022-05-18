@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-
+import pathos.multiprocessing as mp
 from tkinter import N, NS
 import openmc
 import random
-from multiprocessing import Pool
 import h5py
 import os
 import sys
@@ -48,7 +47,7 @@ args = parser.parse_args()
 script_dir = Path.cwd()
 
 input_dir = args.destination
-simname = args.simname
+simname = args.savename
 TallyId = args.tally
 Nsamps = args.samples
 save_name = args.savename
@@ -144,7 +143,9 @@ chunks = [inds[x:x+N_chunks] for x in range(0, len(inds), N_chunks)]
 def parallel_function(ind):
     return get_samples(ind, TallyId, input_dir)
 
+Pool = mp.Pool(ncores)
 results = Pool.map(parallel_function, chunks)
+
 
 mean_samps, stds = zip(*results)
 
