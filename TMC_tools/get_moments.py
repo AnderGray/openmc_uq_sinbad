@@ -15,6 +15,7 @@ import time
 import argparse
 from scipy.stats import norm
 import csv
+import pandas
 
 description = """
 Gets the moments from a TMC simulation
@@ -157,23 +158,39 @@ sample_std = np.std(means, axis = 0)
 av_stat = np.mean(stat_errs, axis = 0)
 Areas = compute_area(means, stat_errs)
 
-field_names = ['E_lo', 'E_hi', 'mean', 'std', 'av_stat_error', 'Area']
-
-rows = [
-    {'E_lo': enLo,
-    'E_hi': enHi,
+save_Data = pandas.DataFrame(
+    {'E_lo': enLo.values,
+    'E_hi': enHi.values,
     'mean': sample_mean,
     'std': sample_std,
     'av_stat_error': av_stat,
     'Area': Areas
     }
-]
+)
+save_Data.to_csv(f'{simname}_moments.csv')
 
+mean_data = pandas.DataFrame(
+    {
+        'E_lo': enLo.values,
+        'E_hi': enHi.values,
+        'mean_samples': means,
+        'stds': stat_errs
+    }
+)
+mean_data.to_csv(f'{simname}_means.csv')
+'''
 with open(f'{simname}_moments.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.DictWriter(f, fieldnames=field_names)
     writer.writeheader()
     writer.writerows(rows)
 
+field_names = ['mean_samps']
+
+with open(f'{simname}_means.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.DictWriter(f, fieldnames=field_names)
+    writer.writeheader()
+    writer.writerows(row_means)
+'''
 print("-----------")
 print()
 print("sample mean:")
